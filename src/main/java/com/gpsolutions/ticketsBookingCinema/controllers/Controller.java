@@ -2,8 +2,8 @@ package com.gpsolutions.ticketsBookingCinema.controllers;
 
 
 import com.gpsolutions.ticketsBookingCinema.dao.Dao;
-import com.gpsolutions.ticketsBookingCinema.entities.Reserv;
-import com.gpsolutions.ticketsBookingCinema.entities.Session;
+import com.gpsolutions.ticketsBookingCinema.service.Reserv;
+import com.gpsolutions.ticketsBookingCinema.service.Show;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class Controller {
     private Dao dao;
 
     @GetMapping(value = "/schedule", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Session> getSchedule() throws IOException {
+    public List<Show> getSchedule() throws IOException {
         LOG.info("getSchedule");
         return dao.getSchedule();
     }

@@ -1,11 +1,11 @@
-package com.gpsolutions.ticketsBookingCinema.entities;
+package com.gpsolutions.ticketsBookingCinema.service;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-public class Session {
+public class Show {
     private int id;
 
     @JsonFormat(pattern = "yyyy,MM,dd't'HH:mm")
@@ -14,7 +14,7 @@ public class Session {
     private String film;
     private int seats;
 
-    public Session(int id, LocalDateTime time, String film, int seats) {
+    public Show (int id, LocalDateTime time, String film, int seats) {
         this.id = id;
         this.time = time;
         this.film = film;

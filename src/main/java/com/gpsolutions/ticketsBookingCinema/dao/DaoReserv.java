@@ -1,7 +1,7 @@
 package com.gpsolutions.ticketsBookingCinema.dao;
 
-import com.gpsolutions.ticketsBookingCinema.entities.Reserv;
-import com.gpsolutions.ticketsBookingCinema.entities.Session;
+import com.gpsolutions.ticketsBookingCinema.service.Reserv;
+import com.gpsolutions.ticketsBookingCinema.service.Show;
 import org.springframework.stereotype.Repository;
 
 import java.io.*;
@@ -10,23 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class DaoImpl implements Dao {
+public class DaoReserv implements Dao {
     private final File TIMETABLE = new File("TIMETABLE.txt");
     private final File RESERV = new File("RESERV.txt");
 
     @Override
-    public List<Session> getSchedule() throws IOException {
+    public List<Show> getSchedule() throws IOException {
         synchronized (TIMETABLE) {
             BufferedReader reader = new BufferedReader(new FileReader(TIMETABLE));
             String sample;
-            List<Session> schedule = new ArrayList<>();
+            List<Show> schedule = new ArrayList<>();
             while ((sample = reader.readLine()) != null) {
                 String[] tmpArray = sample.split("\\s");
                 int id = Integer.parseInt(tmpArray[0]);
                 LocalDateTime dateTime = LocalDateTime.parse(tmpArray[1]);
                 String film = tmpArray[2];
                 int countSeats = Integer.parseInt(tmpArray[3]);
-                schedule.add(new Session(id, dateTime, film, countSeats));
+                schedule.add(new Show(id, dateTime, film, countSeats));
             }
             reader.close();
             return schedule;

@@ -1,4 +1,4 @@
-package com.gpsolutions.ticketsBookingCinema.entities;
+package com.gpsolutions.ticketsBookingCinema.service;
 
 public class Reserv {
     private int id;
